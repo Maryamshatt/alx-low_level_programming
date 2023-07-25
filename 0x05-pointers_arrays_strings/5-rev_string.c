@@ -20,4 +20,4 @@ void rev_string(char *s)
 		s[i] = s[count - 1 - i];
 		s[count - 1 - i] = j;
 	}
-}	
+}
