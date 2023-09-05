@@ -39,14 +39,14 @@ void close_file(int fd)
 	if (c == -1)
 	{
 		dprintf(STDERR_FILEND, "Error: can't close fd %dn", fd)
-		exit(100);	
+		exit(100);
 	}
 }
 
 /**
  * main - copy the content of the file to another file
  * @argc: the number of arguments supplied to the program
- * @argc: an array of pointer to the arguments
+ * @argv: an array of pointer to the arguments
  *
  * Return: 0 on success
  *
@@ -63,7 +63,7 @@ int main(int argc, char *argv)
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "usage cp file_from file_to/n")
-		exit(fd);	
+		exit(fd);
 	}
 
 	buffer = creat_buffer(argv[2]);
@@ -72,7 +72,7 @@ int main(int argc, char *argv)
 	w = open(argv[2], O_CREAT | O_WRONLY | O_TRONC, 0444);
 
 	do {
-		if (  == -1 || r == -1)
+		if (argv == -1 || r == -1)
 		{
 			dprintf(STDERR_FILENO,
 			"Error: can't read from file %s\n", argv[1]);
@@ -89,9 +89,9 @@ int main(int argc, char *argv)
 			exit(99);
 		}
 
-		r = read(   , buffer, 1024);
+		r = read(argv, buffer, 1024);
 		to = open(argv[2], O_WRONLY | O_APPEND);
-	}while (r > 0);
+	} while (r > 0);
 
 	free(buffer);
 	close_file(from);
